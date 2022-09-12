@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
+import { db } from './firebase_config';
+import { collection, getDocs } from 'firebase/firestore';
 
 function App() {
+  const [PokemonObject, setPokemonObject] = useState([])
+
+  const getData = async () => {
+    const pokemonCol = collection(db, 'pokemon')
+    getDocs(pokemonCol).then(response => {
+      const data = response.docs.map(doc => ({ data: doc.data(), id: doc.id }))
+      setPokemonObject(data)
+    })
+  }
+
+  useEffect(() => {
+    getData();
+  }, [])
+
+  console.log(PokemonObject)
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>wadd</h1>
+      {PokemonObject.map(item => (
+        <h1 key={item.data.Id}>{item.data.Name}</h1>
+      ))}
     </div>
   );
 }
