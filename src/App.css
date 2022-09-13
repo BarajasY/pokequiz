@@ -1,0 +1,24 @@
+.app_container {
+    width: 100vw;
+    height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.app_content {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app_questions h1 {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins';
+    width: 400px;
+    height: 400px;
+}
