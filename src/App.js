@@ -1,11 +1,12 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { db } from './firebase_config';
 import { collection, getDocs, limit, orderBy, query } from 'firebase/firestore';
 
 function App() {
   const [PokemonObject, setPokemonObject] = useState([])
   const [Intro, setIntro] = useState(true)
+  const [Loading, setLoading] = useState(true)
   const [Amount, setAmount] = useState(0)
   const [Count, setCount] = useState(0)
   const [Answer, setAnswer] = useState('')
@@ -18,6 +19,9 @@ function App() {
       const data = response.docs.map(doc => ({ data: doc.data(), id: doc.id }))
       setPokemonObject(data)
     })
+    if (PokemonObject) {
+      setLoading(!Loading)
+    }
   }
 
   const handleAnswer = (e) => {
@@ -28,14 +32,8 @@ function App() {
   // Function to start the game and to get the data from the DB.
   const startGame = () => {
     getData()
-    setTimeout(timeoutTest, 1000)
+    setIntro(!Intro)
   }
-
-  const timeoutTest = () => {
-    setIntro(false)
-  }
-
-  console.log(PokemonObject)
 
   return (
     <div className="App">
@@ -50,10 +48,18 @@ function App() {
             </div>
             :
             <div className="app_questions">
-              <h1>Guess the pokemon</h1>
-              <img src={PokemonObject[Count].data.Image} alt={PokemonObject[Count].data.Name} />
-              <input type="text" onChange={(e) => handleAnswer(e)} />
-              <h1>{Answer}</h1>
+              {Loading ?
+                <>
+                  <h1>Loading...</h1>
+                </>
+                :
+                <>
+                  <h1>Guess the pokemon</h1>
+                  <img src={PokemonObject[Count].data.Image} alt={PokemonObject[Count].data.Name} />
+                  <input type="text" onChange={(e) => handleAnswer(e)} />
+                  <h1>{Answer}</h1>
+                </>
+              }
             </div>
           }
         </div>
