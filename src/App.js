@@ -1,38 +1,45 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { db } from './firebase_config';
-import { collection, getDocs, limit, orderBy, query } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 
 function App() {
   const [PokemonObject, setPokemonObject] = useState([])
   const [Intro, setIntro] = useState(true)
-  const [Loading, setLoading] = useState(true)
   const [Amount, setAmount] = useState(0)
   const [Count, setCount] = useState(0)
   const [Answer, setAnswer] = useState('')
 
-  // Get questions from firebase database and store them in PokemonObject useState.
-  const getData = async () => {
-    const pokemonCol = collection(db, 'pokemon');
-    const q = query(pokemonCol, limit(Amount))
-    getDocs(q).then(response => {
-      const data = response.docs.map(doc => ({ data: doc.data(), id: doc.id }))
-      setPokemonObject(data)
-    })
-    if (PokemonObject) {
-      setLoading(!Loading)
+  const handleAnswer = (e) => {
+    setAnswer(e.target.value);
+    if (Answer === PokemonObject[Count].data.Name) {
+      setCount(Count + 1)
     }
   }
 
-  const handleAnswer = (e) => {
-    setAnswer(e.target.value)
+  useEffect(() => {
+    const getData = async () => {
+      const pokemonCol = collection(db, 'pokemon');
+      getDocs(pokemonCol).then(response => {
+        const data = response.docs.map(doc => ({ data: doc.data(), id: doc.id }))
+        setPokemonObject(data)
+      })
+    }
+
+    getData()
+  }, [])
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
   }
 
-
-  // Function to start the game and to get the data from the DB.
   const startGame = () => {
-    getData()
-    setIntro(!Intro)
+    shuffleArray(PokemonObject);
+    PokemonObject.length = Amount;
+    setIntro(!Intro);
   }
 
   return (
@@ -48,18 +55,10 @@ function App() {
             </div>
             :
             <div className="app_questions">
-              {Loading ?
-                <>
-                  <h1>Loading...</h1>
-                </>
-                :
-                <>
-                  <h1>Guess the pokemon</h1>
-                  <img src={PokemonObject[Count].data.Image} alt={PokemonObject[Count].data.Name} />
-                  <input type="text" onChange={(e) => handleAnswer(e)} />
-                  <h1>{Answer}</h1>
-                </>
-              }
+              <h1>Guess the pokemon</h1>
+              <img src={PokemonObject[Count].data.Image} alt={PokemonObject[Count].data.Name} />
+              <input type="text" onChange={(e) => handleAnswer(e)} />
+              <h1>{Answer}</h1>
             </div>
           }
         </div>
