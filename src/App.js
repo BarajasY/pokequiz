@@ -8,12 +8,11 @@ function App() {
   const [Intro, setIntro] = useState(true)
   const [Amount, setAmount] = useState(0)
   const [Count, setCount] = useState(0)
-  const [Answer, setAnswer] = useState('')
 
   const handleAnswer = (e) => {
-    setAnswer(e.target.value);
-    if (Answer === PokemonObject[Count].data.Name) {
-      setCount(Count + 1)
+    if (e.target.value === PokemonObject[Count].data.Name) {
+      setCount(Count => Count + 1)
+      e.target.value = ''
     }
   }
 
@@ -39,7 +38,7 @@ function App() {
   const startGame = () => {
     shuffleArray(PokemonObject);
     PokemonObject.length = Amount;
-    setIntro(!Intro);
+    setIntro(intro => !intro);
   }
 
   return (
@@ -55,10 +54,9 @@ function App() {
             </div>
             :
             <div className="app_questions">
-              <h1>Guess the pokemon</h1>
-              <img src={PokemonObject[Count].data.Image} alt={PokemonObject[Count].data.Name} />
+              <h1>Guess the pokemon!</h1>
+              <img src={PokemonObject[Count].data.Image} alt={PokemonObject[Count].data.Name} draggable="false" />
               <input type="text" onChange={(e) => handleAnswer(e)} />
-              <h1>{Answer}</h1>
             </div>
           }
         </div>
