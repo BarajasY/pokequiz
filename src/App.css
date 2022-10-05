@@ -34,16 +34,19 @@
 
 .app_intro h1 {
     text-align: center;
-    font-size: 40px;
+    font-size: 50px;
+    font-weight: 300;
     font-family: 'Poppins';
     color: var(--color1);
 }
 
 .section input {
-    border: 3px solid var(--color2);
+    border: none;
     font-size: 40px;
     width: 90px;
     height: 90px;
+    font-family: 'Poppins';
+    font-weight: 300;
     text-align: center;
     padding: 20px;
     border-radius: 15px;
@@ -64,7 +67,12 @@
 
 .app_intro input:focus {
     transform: translateY(-30px);
-    color: var(--color3);
+    color: var(--color2);
+}
+
+.selected {
+    transform: translateY(-30px);
+    color: var(--color2);
 }
 
 .app_intro button {
@@ -73,6 +81,7 @@
     font-size: 30px;
     background: none;
     font-family: 'Poppins';
+    font-weight: 300;
     border-radius: 10px;
     border: 3px solid transparent;
     color: var(--color1);
@@ -81,15 +90,29 @@
 }
 
 .app_intro button:hover {
+    color: var(--color2);
     transition: .3s;
     filter: blur(100%);
-    border: 3px solid var(--color3);
+    border: 3px solid var(--color2);
 }
 
 .section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.section button {
+    border: none;
+}
+
+.section button:hover {
+    border: none;
+    transform: translateY(-15px);
+}
+
+.section button:focus {
+    color: var(--color2);
 }
 
 .app_questions {
@@ -124,7 +147,7 @@
     border-bottom: 2px solid var(--color2);
     outline: none;
     background: none;
-    color: var(--color1);
+    color: var(--color2);
 }
 
 .app_results {
@@ -163,6 +186,7 @@
 
 .app_results button:hover {
     border: 3px solid var(--color2);
+    color: var(--color2);
 }
 
 .app_questions button {
@@ -185,6 +209,16 @@
 
 .app_questions button:hover {
     border: 3px solid var(--color2);
+    color: var(--color2);
+}
+
+#normal {
+    filter: brightness(0%);
+}
+
+#hard {
+    filter: brightness(0%);
+    position: relative;
 }
 
 @media only screen and (max-width: 400px) {

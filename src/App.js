@@ -79,6 +79,9 @@ function App() {
                   <input type="button" key={value} value={value} onClick={v => setAmount(v.target.value)} />
                 ))}
               </div>
+              {/*               <div className="section">
+                <button></button>
+              </div> */}
               <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} onClick={startGame}>Start</motion.button>
             </div>
             :
