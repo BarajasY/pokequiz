@@ -8,12 +8,12 @@ function App() {
   const [PokemonObject, setPokemonObject] = useState([])
   const [Intro, setIntro] = useState(true)
   const [Result, setResult] = useState(false)
-  const [Amount, setAmount] = useState(0)
+  const [Amount, setAmount] = useState(1)
   const [Count, setCount] = useState(0)
   const [Grade, setGrade] = useState(0)
   const [Difficulty, setDifficulty] = useState('Normal')
   const [Shortened, setShortened] = useState([])
-  const numbers = [1, 2, 5, 6, 8, 10, 15];
+  const numbers = [3, 6, 10, 15, 20];
 
   useEffect(() => {
     const getData = async () => {
@@ -38,6 +38,7 @@ function App() {
     shuffleArray(PokemonObject);
     setShortened(PokemonObject.slice(0, Amount))
     setIntro(intro => !intro);
+    console.log(PokemonObject)
   }
 
   const handleAnswer = (e) => {
@@ -106,7 +107,7 @@ function App() {
                   {{
                     'Normal': <img id="normal" src={Shortened[Count].data.Image} alt={Shortened[Count].data.Name} draggable="false" />,
                     'Hard': <img id="hard" src={Shortened[Count].data.Image} alt={Shortened[Count].data.Name} draggable="false" />,
-                    'Hell': <motion.img id="hard" animate={{ rotate: [0, 180, 270, 180, 270, 90, 0, 300, 0] }} transition={{ repeat: Infinity, duration: 2 }} src={Shortened[Count].data.Image} alt={Shortened[Count].data.Name} draggable="false" />
+                    'Hell': <motion.img id="hard" animate={{ rotate: [100, 0, 180, 270, 180, 270, 90, 0, 300, 0, 100] }} transition={{ repeat: Infinity, duration: 2 }} src={Shortened[Count].data.Image} alt={Shortened[Count].data.Name} draggable="false" />
                   }[Difficulty]}
                   <input type="text" onChange={(e) => handleAnswer(e)} />
                   <button onClick={handleNext}>Next</button>
