@@ -5,6 +5,8 @@
     display: flex;
     justify-content: center;
     background: var(--color4);
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .app_content {
@@ -43,8 +45,8 @@
 .section input {
     border: none;
     font-size: 40px;
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     font-family: 'Poppins';
     font-weight: 300;
     text-align: center;
@@ -70,20 +72,18 @@
     color: var(--color2);
 }
 
-.selected {
-    transform: translateY(-30px);
-    color: var(--color2);
-}
-
 .app_intro button {
     margin-top: 30px;
+    height: 60px;
     padding: 10px 20px;
+    display: flex;
+    align-items: center;
     font-size: 30px;
     background: none;
     font-family: 'Poppins';
     font-weight: 300;
     border-radius: 10px;
-    border: 3px solid transparent;
+    border: none;
     color: var(--color1);
     transition: .3s;
     cursor: pointer;
@@ -92,8 +92,6 @@
 .app_intro button:hover {
     color: var(--color2);
     transition: .3s;
-    filter: blur(100%);
-    border: 3px solid var(--color2);
 }
 
 .section {
@@ -115,6 +113,23 @@
     color: var(--color2);
 }
 
+.section2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section2 p {
+    font-size: 25px;
+    font-family: 'Montserrat';
+    font-weight: 700;
+}
+
+.section2 p span {
+    color: var(--color2);
+}
+
 .app_questions {
     height: 100vh;
     width: 80%;
@@ -127,7 +142,9 @@
 .app_questions h1 {
     color: var(--color1);
     font-size: 50px;
-    height: 10%;
+    height: 5%;
+    font-family: 'Poppins';
+    font-weight: 500;
     text-align: center;
 }
 
@@ -141,6 +158,7 @@
     font-size: 30px;
     padding: 20px;
     text-align: center;
+    width: 250px;
     border-top: none;
     border-left: none;
     border-right: none;
@@ -159,6 +177,7 @@
 .app_results h1 {
     color: var(--color1);
     font-size: 40px;
+    font-weight: 400;
     font-family: 'Poppins';
     text-align: center;
 }
@@ -176,7 +195,7 @@
     height: 80px;
     font-family: 'Montserrat';
     background: none;
-    border: 3px solid transparent;
+    border: none;
     color: var(--color1);
     transition: .3s;
     font-size: 25px;
@@ -185,7 +204,6 @@
 }
 
 .app_results button:hover {
-    border: 3px solid var(--color2);
     color: var(--color2);
 }
 
@@ -197,9 +215,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
     font-family: 'Montserrat';
     background: none;
-    border: 3px solid transparent;
     color: var(--color1);
     transition: .3s;
     font-size: 25px;
@@ -208,17 +226,11 @@
 }
 
 .app_questions button:hover {
-    border: 3px solid var(--color2);
     color: var(--color2);
-}
-
-#normal {
-    filter: brightness(0%);
 }
 
 #hard {
     filter: brightness(0%);
-    position: relative;
 }
 
 @media only screen and (max-width: 400px) {
@@ -230,5 +242,49 @@
         width: 60px;
         height: 60px;
         font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .app_intro h1 {
+        font-size: 6vw;
+    }
+
+    .section input {
+        font-size: 6vw;
+        width: 8vw;
+        height: 8vw;
+        margin: 5px;
+        padding: 5px
+    }
+
+    .app_intro button {
+        font-size: 4vw;
+    }
+
+    .section2 p {
+        font-size: 4vw;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .app_intro h1 {
+        font-size: 4vw;
+    }
+
+    .section input {
+        font-size: 6vw;
+        width: 8vw;
+        height: 8vw;
+        margin: 5px;
+        padding: 5px
+    }
+
+    .app_intro button {
+        font-size: 4vw;
+    }
+
+    .section2 p {
+        font-size: 4vw;
     }
 }
