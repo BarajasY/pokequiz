@@ -75,7 +75,7 @@ function App() {
           {Intro
             ?
             <div className="app_intro">
-              <motion.h1 initial={{ y: -10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1 }}>Select the amount of pokemon to guess!</motion.h1>
+              <motion.h1 initial={{ y: -10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1 }}>Select the amount and difficulty</motion.h1>
               <div className="section">
                 {numbers.map(value => (
                   <input type="button" key={value} value={value} onClick={v => setAmount(v.target.value)} />
@@ -98,7 +98,7 @@ function App() {
                 ?
                 <div className="app_results">
                   <h1>Congratulations, you've made it to the end!</h1>
-                  <p>This is your result: {Grade} of {Amount} </p>
+                  <p>Result: {Grade} / {Amount} </p>
                   <button onClick={Restart}>Want to restart?</button>
                 </div>
                 :
@@ -110,7 +110,7 @@ function App() {
                     'Hell': <motion.img id="hard" animate={{ rotate: [100, 0, 180, 270, 180, 270, 90, 0, 300, 0, 100] }} transition={{ repeat: Infinity, duration: 2 }} src={Shortened[Count].data.Image} alt={Shortened[Count].data.Name} draggable="false" />
                   }[Difficulty]}
                   <input type="text" onChange={(e) => handleAnswer(e)} />
-                  <button onClick={handleNext}>Next</button>
+                  <p>Don't know the answer?<button onClick={handleNext}>Next</button></p>
                 </motion.div>
               }
             </>

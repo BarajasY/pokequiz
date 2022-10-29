@@ -23,6 +23,7 @@
     align-items: center;
     justify-content: center;
     font-family: 'Poppins';
+    color: white;
     width: 400px;
     height: 400px;
 }
@@ -37,7 +38,7 @@
 .app_intro h1 {
     text-align: center;
     font-size: 50px;
-    font-weight: 300;
+    font-weight: 800;
     font-family: 'Poppins';
     color: var(--color1);
 }
@@ -48,7 +49,7 @@
     width: 70px;
     height: 70px;
     font-family: 'Poppins';
-    font-weight: 300;
+    font-weight: 800;
     text-align: center;
     padding: 20px;
     border-radius: 15px;
@@ -81,7 +82,7 @@
     font-size: 30px;
     background: none;
     font-family: 'Poppins';
-    font-weight: 300;
+    font-weight: 800;
     border-radius: 10px;
     border: none;
     color: var(--color1);
@@ -90,8 +91,13 @@
 }
 
 .app_intro button:hover {
-    color: var(--color2);
     transition: .3s;
+    transform: translateY(-10px);
+}
+
+.app_intro button:focus {
+    transform: translateY(-30px);
+    color: var(--color2);
 }
 
 .section {
@@ -142,7 +148,8 @@
 .app_questions h1 {
     color: var(--color1);
     font-size: 50px;
-    height: 5%;
+    width: 100%;
+    height: fit-content;
     font-family: 'Poppins';
     font-weight: 500;
     text-align: center;
@@ -166,6 +173,34 @@
     outline: none;
     background: none;
     color: var(--color2);
+}
+
+.app_questions p {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.app_questions p button {
+    margin: 0;
+    position: relative;
+}
+
+.app_questions p button::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0px;
+    height: 3px;
+    background: var(--color2);
+    transform: translateY(50px);
+    transition: .2s;
+}
+
+.app_questions p button:hover::after {
+    width: 100%;
 }
 
 .app_results {
