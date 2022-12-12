@@ -10,6 +10,7 @@ function App() {
   const [Result, setResult] = useState(false)
   const [Amount, setAmount] = useState(1)
   const [Count, setCount] = useState(0)
+  const [SelDiff, setSelDiff] = useState(false)
   const [Grade, setGrade] = useState(0)
   const [Difficulty, setDifficulty] = useState('Normal')
   const [Shortened, setShortened] = useState([])
@@ -63,8 +64,9 @@ function App() {
     setAmount(0);
     setCount(0);
     setGrade(0);
-    setIntro(true);
+    setIntro(true); 
     setResult(false);
+    setSelDiff(false);
     setShortened([])
   }
 
@@ -75,22 +77,27 @@ function App() {
           {Intro
             ?
             <div className="app_intro">
-              <motion.h1 initial={{ y: -10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1 }}>Select the amount and difficulty</motion.h1>
-              <div className="section">
-                {numbers.map(value => (
-                  <input type="button" key={value} value={value} onClick={v => setAmount(v.target.value)} />
-                ))}
-              </div>
-              <div className="section">
-                <button onClick={() => setDifficulty('Normal')}>Normal</button>
-                <button onClick={() => setDifficulty('Hard')}>Hard</button>
-                <button onClick={() => setDifficulty('Hell')}>Hell</button>
-              </div>
-              <div className="section2">
-                <p>Amount: <span>{Amount}</span></p>
-                <p>Difficulty: <span>{Difficulty}</span></p>
-              </div>
-              <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} onClick={startGame}>Start</motion.button>
+              {SelDiff ?
+              <>
+                <motion.h1 initial={{opacity: 0}} animate={{opacity: 1}}>Difficulty</motion.h1>
+                <motion.div  initial={{opacity: 0}} animate={{opacity: 1}} className="section">
+                  <button onClick={() => setDifficulty('Normal')}>Normal</button>
+                  <button onClick={() => setDifficulty('Hard')}>Hard</button>
+                  <button onClick={() => setDifficulty('Hell')}>Hell</button>
+                </motion.div>
+                <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} onClick={startGame}>Start</motion.button>
+              </>
+              : 
+              <>
+                  <motion.h1 initial={{ y: -10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1 }}>Amount</motion.h1>
+                  <div className="section">
+                    {numbers.map(value => (
+                      <motion.input initial={{ opacity: 0 }} animate={{ opacity: 1 }} type="button" key={value} value={value} onClick={v => setAmount(v.target.value)} />
+                      ))}
+                  </div>
+                  <button onClick={() => setSelDiff(true)}>Next</button>
+                      </>
+              }
             </div>
             :
             <>

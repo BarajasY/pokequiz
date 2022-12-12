@@ -4,7 +4,7 @@
     min-width: 100vw;
     display: flex;
     justify-content: center;
-    background: var(--color4);
+    background: var(--color0);
     overflow-x: hidden;
     overflow-y: hidden;
 }
@@ -40,7 +40,7 @@
     font-size: 50px;
     font-weight: 800;
     font-family: 'Poppins';
-    color: var(--color1);
+    color: var(--color6);
 }
 
 .section input {
@@ -65,12 +65,11 @@
 }
 
 .app_intro input:hover {
-    transform: translateY(-10px);
+    transform: translateY(-9px);
 }
 
 .app_intro input:focus {
-    transform: translateY(-30px);
-    color: var(--color2);
+    color: var(--color3);
 }
 
 .app_intro button {
@@ -92,12 +91,8 @@
 
 .app_intro button:hover {
     transition: .3s;
-    transform: translateY(-10px);
-}
-
-.app_intro button:focus {
-    transform: translateY(-30px);
-    color: var(--color2);
+    transform: translateY(-3px);
+    color: var(--color3);
 }
 
 .section {
@@ -112,11 +107,11 @@
 
 .section button:hover {
     border: none;
-    transform: translateY(-15px);
+    transform: translateY(-9px);
 }
 
 .section button:focus {
-    color: var(--color2);
+    color: var(--color3);
 }
 
 .section2 {
@@ -133,7 +128,7 @@
 }
 
 .section2 p span {
-    color: var(--color2);
+    color: var(--color6);
 }
 
 .app_questions {
@@ -146,7 +141,7 @@
 }
 
 .app_questions h1 {
-    color: var(--color1);
+    color: var(--color6);
     font-size: 50px;
     width: 100%;
     height: fit-content;
@@ -169,10 +164,10 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 2px solid var(--color2);
+    border-bottom: 2px solid var(--color6);
     outline: none;
     background: none;
-    color: var(--color2);
+    color: var(--color6);
 }
 
 .app_questions p {
@@ -194,7 +189,7 @@
     left: 0;
     width: 0px;
     height: 3px;
-    background: var(--color2);
+    background: var(--color6);
     transform: translateY(50px);
     transition: .2s;
 }
@@ -210,7 +205,7 @@
 }
 
 .app_results h1 {
-    color: var(--color1);
+    color: var(--color6);
     font-size: 40px;
     font-weight: 400;
     font-family: 'Poppins';
@@ -218,7 +213,7 @@
 }
 
 .app_results p {
-    color: var(--color2);
+    color: var(--color6);
     text-align: center;
     font-size: 30px;
     font-family: 'Poppins';
@@ -239,7 +234,7 @@
 }
 
 .app_results button:hover {
-    color: var(--color2);
+    color: var(--color6);
 }
 
 .app_questions button {
@@ -261,7 +256,7 @@
 }
 
 .app_questions button:hover {
-    color: var(--color2);
+    color: var(--color6);
 }
 
 #hard {

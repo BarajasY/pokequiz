@@ -14,9 +14,11 @@ code {
 }
 
 :root {
+  --color0: #ffffff;
   --color1: #202947;
   --color2: #fad631;
   --color3: #db5177;
   --color4: #4e74aa;
   --color5: #323E45;
+  --color6: #85c69e;
 }
