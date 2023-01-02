@@ -39,12 +39,11 @@ function App() {
     shuffleArray(PokemonObject);
     setShortened(PokemonObject.slice(0, Amount))
     setIntro(intro => !intro);
-    console.log(PokemonObject)
   }
 
   const handleAnswer = (e) => {
     if (e.target.value === Shortened[Count].data.Name || e.target.value === Shortened[Count].data.Name.toLowerCase()) {
-      setCount(Count => Count + 1)
+      setCount(Count + 1)
       setGrade(Grade + 1)
       e.target.value = '';
       if (Shortened.length === Count + 1) {
@@ -111,6 +110,7 @@ function App() {
                 :
                 <motion.div className="app_questions" initial={{ x: 1800 }} animate={{ x: 0 }} transition={{ duration: 1, type: 'spring' }}>
                   <motion.h1 initial={{ y: -10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1 }} >Who is that pokemon?</motion.h1>
+                  <motion.p initial={{ y: -10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1 }} >{Count + 1}/{Amount}</motion.p>
                   {{
                     'Normal': <img id="normal" src={Shortened[Count].data.Image} alt={Shortened[Count].data.Name} draggable="false" />,
                     'Hard': <img id="hard" src={Shortened[Count].data.Image} alt={Shortened[Count].data.Name} draggable="false" />,

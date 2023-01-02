@@ -5,8 +5,6 @@
     display: flex;
     justify-content: center;
     background: var(--color0);
-    overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 .app_content {
@@ -68,9 +66,7 @@
     transform: translateY(-9px);
 }
 
-.app_intro input:focus {
-    color: var(--color3);
-}
+.app_intro input:focus {color: var(--color3);}
 
 .app_intro button {
     margin-top: 30px;
@@ -101,18 +97,14 @@
     justify-content: center;
 }
 
-.section button {
-    border: none;
-}
+.section button {border: none;}
 
 .section button:hover {
     border: none;
     transform: translateY(-9px);
 }
 
-.section button:focus {
-    color: var(--color3);
-}
+.section button:focus {color: var(--color3);}
 
 .section2 {
     display: flex;
@@ -127,9 +119,7 @@
     font-weight: 700;
 }
 
-.section2 p span {
-    color: var(--color6);
-}
+.section2 p span {color: var(--color6);}
 
 .app_questions {
     height: 100vh;
@@ -190,12 +180,15 @@
     width: 0px;
     height: 3px;
     background: var(--color6);
-    transform: translateY(50px);
+    transform: translateY(50px) translateX(50%);
     transition: .2s;
 }
 
-.app_questions p button:hover::after {
-    width: 100%;
+.app_questions p button:hover::after {width: 50%;}
+
+.app_questions p:nth-child(2){
+    color: var(--color3);
+    font-size: 1.5vw;
 }
 
 .app_results {
@@ -233,9 +226,7 @@
     padding: 20px;
 }
 
-.app_results button:hover {
-    color: var(--color6);
-}
+.app_results button:hover, .app_questions button:hover {color: var(--color6);}
 
 .app_questions button {
     margin-top: 40px;
@@ -255,13 +246,7 @@
     padding: 20px;
 }
 
-.app_questions button:hover {
-    color: var(--color6);
-}
-
-#hard {
-    filter: brightness(0%);
-}
+#hard {filter: brightness(0%);}
 
 @media only screen and (max-width: 400px) {
     .app_intro h1 {
@@ -276,9 +261,7 @@
 }
 
 @media only screen and (max-width: 800px) {
-    .app_intro h1 {
-        font-size: 6vw;
-    }
+    .app_intro h1 {font-size: 6vw;}
 
     .section input {
         font-size: 6vw;
@@ -288,19 +271,11 @@
         padding: 5px
     }
 
-    .app_intro button {
-        font-size: 4vw;
-    }
-
-    .section2 p {
-        font-size: 4vw;
-    }
+    .app_intro button, .section2 p {font-size: 4vw;}
 }
 
 @media only screen and (max-width: 991px) {
-    .app_intro h1 {
-        font-size: 4vw;
-    }
+    .app_intro button, .section2 p, .app_intro h1 {font-size: 4vw;}
 
     .section input {
         font-size: 6vw;
@@ -310,11 +285,7 @@
         padding: 5px
     }
 
-    .app_intro button {
-        font-size: 4vw;
-    }
-
-    .section2 p {
-        font-size: 4vw;
+    .app_questions p:nth-child(2) {
+        font-size: 3.5vw;
     }
 }
