@@ -285,7 +285,5 @@
         padding: 5px
     }
 
-    .app_questions p:nth-child(2) {
-        font-size: 3.5vw;
-    }
+    .app_questions p:nth-child(2) {font-size: 3.5vw;}
 }
